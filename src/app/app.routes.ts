@@ -3,12 +3,12 @@ import authRoutes from './auth/auth.routes';
 import publicRoutes from './public/public.routes';
 
 export const routes: Routes = [
-  {
+    {
     path: '',
-    children: authRoutes
+    children: publicRoutes
   },
   {
     path: '',
-    children: publicRoutes
+    children: authRoutes
   }
 ];
