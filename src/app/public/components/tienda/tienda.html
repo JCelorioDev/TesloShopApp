@@ -5,7 +5,7 @@
 <!-- SUBMENU END -->
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 p-4">
-  @for (item of generateArray(25); track $index) {
-    <shared-product></shared-product>
+  @for (product of listProducts(); track $index) {
+    <shared-product [product]="product"></shared-product>
   }
 </div>
