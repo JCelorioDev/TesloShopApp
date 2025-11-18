@@ -1,4 +1,4 @@
-<div (click)="navigateToProduct(product().id)" class="animate__animated animate__fadeIn w-full">
+<div (click)="navigateToProduct(product().id)" class="animate__animated animate__fadeIn w-full product">
   <div class="card bg-base-100 w-full shadow-sm hover:shadow-md transition-shadow duration-300">
     <figure class="overflow-hidden">
       <img
@@ -8,9 +8,9 @@
     </figure>
     <div class="card-body p-4 md:p-6">
       <h2 class="card-title text-lg md:text-xl">{{product().title}}</h2>
-      <p class="text-sm md:text-base">{{product().description}}</p>
+      <p class="text-sm md:text-base">{{product().description | slice:0:100}}...</p>
       <div class="card-actions justify-end mt-4">
-        <button (click)="cartCount.addItemsCart()" class="btn btn-primary btn-sm md:btn-md">Agregar al carrito</button>
+        <button (click)="cartCount.addItemsCart(); $event.stopPropagation()" class="btn btn-primary btn-sm md:btn-md">Agregar al carrito</button>
       </div>
     </div>
   </div>

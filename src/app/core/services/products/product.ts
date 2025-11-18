@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ProductResponseI } from '../../models/products/produtResponse.interface';
 import { environment } from '../../../../environments/environment';
+import { ProductShowResponseI } from '../../models/products/productShowResponse.interface';
 
 interface Options {
   limit ? : number,
@@ -39,5 +40,7 @@ export class Product {
 
   // * Ver un productoo
 
-  viewProduct(idProducto:string):Observable
+  viewProduct(idProducto:string):Observable<ProductShowResponseI>{
+    return this.httpClient.get<ProductShowResponseI>(`${environment.api.baseUrl}products/${idProducto}`)
+  }
 }
