@@ -1,8 +1,8 @@
-<div class="animate__animated animate__fadeIn w-full">
+<div (click)="navigateToProduct(product().id)" class="animate__animated animate__fadeIn w-full">
   <div class="card bg-base-100 w-full shadow-sm hover:shadow-md transition-shadow duration-300">
     <figure class="overflow-hidden">
       <img
-        [src]="product().images"
+        [src]="product().images | productImage"
         [alt]="product().slug"
         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-300" />
     </figure>

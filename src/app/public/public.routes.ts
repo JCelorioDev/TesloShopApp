@@ -3,6 +3,7 @@ import { Layout } from "../shared/pages/layout/layout";
 import { Inicio } from "./components/inicio/inicio";
 import { Tienda } from "./components/tienda/tienda";
 import { Carrito } from "./components/carrito/carrito";
+import { VerProducto } from "./components/ver-producto/ver-producto";
 
 export default [
   {
@@ -25,6 +26,10 @@ export default [
       {
         path: 'carrito',
         component: Carrito
+      },
+      {
+        path: 'producto/:idProducto',
+        component: VerProducto
       },
       {
         path: '**',
