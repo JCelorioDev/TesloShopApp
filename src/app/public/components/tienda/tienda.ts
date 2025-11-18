@@ -6,6 +6,9 @@ import { CartCount } from '../../../core/services/cart-count';
 import { Product } from '../../../shared/components/product/product';
 import { Product as ProductService } from '../../../core/services/products/product'
 import { Product as ProductI } from '../../../core/models/products/produtResponse.interface';
+import { firstValueFrom } from 'rxjs';
+import {ProductResponseI} from '../../../core/models/products/produtResponse.interface';
+
 
 @Component({
   selector: 'app-tienda',
@@ -20,13 +23,14 @@ export class Tienda {
   private readonly productService = inject(ProductService);
   public listProducts = signal<ProductI[]>([]);
 
+  constructor(){
+  }
 
-  productsResource = resource({
-    params: () => ({}),
-    loader: async () => {
-      return await this.productService.getProducts();
-    }
-  })
+
+
+  public listProductResource = resource<ProductResponseI | null, Error>({
+    loader: () => firstValueFrom(this.productService.getProducts())
+  });
 
   ngOnInit():void {
       this.route.queryParams.subscribe(params => {
@@ -35,9 +39,7 @@ export class Tienda {
         this.getProducts(this.currentGender)
       }
     });
-
     // * Llamar para obtener todos los productos
-
     this.getProducts();
   }
 
