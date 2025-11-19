@@ -4,18 +4,32 @@
 
 <!-- SUBMENU END -->
 
+
+
+<!-- LISTA DE PRODUCTOS -->
+
 @if (listProducts().length > 0) {
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 p-4">
-  @for (product of listProducts(); track $index) {
+  @for (product of productResource.value()!.products; track $index) {
     <shared-product [product]="product"></shared-product>
   }@empty {
     No hay más productos para mostrar
   }
   </div>
 
+  <!--
+
+  POR BOTON PARA VER MAS PRODUCTOS
+
   <div class="grid mb-3 grid-flow-col justify-items-center">
     <button (click)="moreProducts()" class="btn btn-warning">Más productos</button>
-  </div>
+  </div> -->
+
+
+  <shared-pagination [currentPage]="currentPage()" [pages]="productResource.value()?.pages ?? 0"></shared-pagination>
+
 }
+
+
 
 
