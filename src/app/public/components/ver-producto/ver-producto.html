@@ -1,3 +1,10 @@
+<div class="breadcrumbs text-sm ml-5">
+  <ul>
+    <li><a routerLink="inicio">Inicio</a></li>
+    <li>Tienda</li>
+  </ul>
+</div>
+
 <div class="flex justify-center px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-6xl space-y-8">
 
@@ -75,6 +82,7 @@
         </div>
       </div>
 
+      <h1 class="text-xl sm:text-2xl lg:text-3xl font-bold flex justify-center card-title">Galería del producto</h1>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
         @for (url_img of producto.images; track $index) {

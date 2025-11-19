@@ -1,5 +1,5 @@
 import { Component, inject, resource, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { Product } from '../../../core/services/products/product';
 import { ProductShowResponseI as ProductI } from '../../../core/models/products/productShowResponse.interface';
 import { CommonModule } from '@angular/common';
@@ -8,7 +8,7 @@ import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-ver-producto',
-  imports: [CommonModule, ProductImage, RouterLink],
+  imports: [CommonModule, ProductImage, RouterModule],
   templateUrl: './ver-producto.html',
   styleUrl: './ver-producto.scss',
 })
