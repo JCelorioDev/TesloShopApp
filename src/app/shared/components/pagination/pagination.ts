@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, input, linkedSignal, output, signal } from '@angular/core';
+import { Component, computed, inject, input, linkedSignal, output, signal } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { PaginationService } from './pagination-service';
 
 @Component({
   selector: 'shared-pagination',
@@ -13,9 +14,14 @@ export class Pagination {
   pages = input(0);
   currentPage = input<number>(1);
   activePage = linkedSignal(this.currentPage);
+   private paginationService = inject(PaginationService);
 
   constructor(){
 
+  }
+
+    changePage(page: number): void {
+    this.paginationService.changePage(page); 
   }
 
   // * Obtener un array en base a un valor N

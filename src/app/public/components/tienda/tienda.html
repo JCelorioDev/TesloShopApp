@@ -8,7 +8,8 @@
 
 <!-- LISTA DE PRODUCTOS -->
 
-@if (listProducts().length > 0) {
+
+@if (productResource.value()?.products) {
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 lg:gap-8 p-4">
   @for (product of productResource.value()!.products; track $index) {
     <shared-product [product]="product"></shared-product>
@@ -26,7 +27,7 @@
   </div> -->
 
 
-  <shared-pagination [currentPage]="currentPage()" [pages]="productResource.value()?.pages ?? 0"></shared-pagination>
+  <shared-pagination [currentPage]="paginationService.currentPage()" [pages]="productResource.value()?.pages ?? 0"></shared-pagination>
 
 }
 

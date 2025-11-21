@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
-import { RouterLinkActive, Router } from "@angular/router";
+import { RouterLinkActive, Router, ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -12,14 +12,22 @@ import { RouterLinkActive, Router } from "@angular/router";
 })
 export class SubMenu {
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
   private selectedFilter = signal<string>('');
 
-  navigateToGender(gender: string) {
+ navigateToGender(gender: string) {
+    const currentParams = this.route.snapshot.queryParams;
+
     this.router.navigate(['menu/tienda'], {
-      queryParams: { gender: gender }
+      queryParams: {
+        ...currentParams, // Mantiene el page actual
+        gender: gender
+      },
+      queryParamsHandling: 'merge'
     });
     this.selectedFilter.set(gender);
   }
+
 
   // * Mostrar el valor de selected filter
 

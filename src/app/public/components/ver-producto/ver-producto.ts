@@ -1,5 +1,5 @@
 import { Component, inject, resource, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/router';
 import { Product } from '../../../core/services/products/product';
 import { ProductShowResponseI as ProductI } from '../../../core/models/products/productShowResponse.interface';
 import { CommonModule } from '@angular/common';
@@ -8,12 +8,13 @@ import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-ver-producto',
-  imports: [CommonModule, ProductImage, RouterModule],
+  imports: [CommonModule, ProductImage, RouterModule, RouterLink],
   templateUrl: './ver-producto.html',
   styleUrl: './ver-producto.scss',
 })
 export class VerProducto {
   private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
   private readonly productService = inject(Product);
   private idProducto = signal<string>('');
   public objProducto = signal<ProductI|null>(null);
@@ -39,5 +40,9 @@ export class VerProducto {
 
       }
     })
+  }
+
+  goToShop():void{
+    this.router.navigate(['menu/tienda']);
   }
 }
