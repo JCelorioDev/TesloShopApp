@@ -1,6 +1,8 @@
 import { Routes } from "@angular/router";
 import { Register } from "./register/register";
 import { Login } from "./login/login";
+import { notAuthGuard } from "../core/guards/not-auth-guard";
+
 
 export default [
   {
@@ -10,10 +12,12 @@ export default [
   },
   {
     path: 'auth/login',
-    component: Login
+    component: Login,
+    canActivate: [notAuthGuard]
   },
   {
     path: 'auth/register',
-    component: Register
+    component: Register,
+    canActivate: [notAuthGuard]
   }
 ] as Routes

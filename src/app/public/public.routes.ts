@@ -4,6 +4,9 @@ import { Inicio } from "./components/inicio/inicio";
 import { Tienda } from "./components/tienda/tienda";
 import { Carrito } from "./components/carrito/carrito";
 import { VerProducto } from "./components/ver-producto/ver-producto";
+import { privateRoutes } from "../private/private.routes";
+
+
 
 export default [
   {
@@ -31,10 +34,11 @@ export default [
         path: 'producto/:idProducto',
         component: VerProducto
       },
+      ...privateRoutes,
       {
         path: '**',
         redirectTo: 'inicio'
-      }
+      },
     ]
   }
 ] as Routes

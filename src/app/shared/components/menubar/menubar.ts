@@ -4,7 +4,7 @@ import { Router, RouterModule } from '@angular/router';
 import { CartCount } from '../../../core/services/cart-count';
 import { Login } from "../../../auth/login/login";
 import { sign } from 'crypto';
-import { AuthResponseI } from '../../../core/models/auth/authResponse.interface';
+import { AuthResponseI, User } from '../../../core/models/auth/authResponse.interface';
 import { Auth } from '../../../core/services/auth/auth';
 
 @Component({
@@ -30,8 +30,8 @@ export class Menubar {
 
   // * Obtener el valor del localStorage
 
-  get getInfoUser():AuthResponseI|null {
-    const userLogin =  localStorage.getItem('userLogin')!;
+  get getInfoUser():User|null {
+    const userLogin =  localStorage.getItem('user')!;
     if (!!userLogin) {
       return JSON.parse(userLogin);
     }

@@ -42,14 +42,12 @@ export class Login {
     }
 
 
-    this.authService.login(this.formLogin.value).subscribe({
-      next: (s) => {
-        localStorage.setItem('userLogin', JSON.stringify(s));
+    this.authService.login(this.formLogin.value).subscribe((isAuthenticated) => {
+      if (isAuthenticated) {
         this.onClose();
-      },
-      error: (err) => {
-
       }
+
+      console.log('ocurrio un error');
     })
 
   }
