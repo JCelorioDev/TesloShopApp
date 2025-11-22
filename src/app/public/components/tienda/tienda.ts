@@ -11,10 +11,11 @@ import {ProductResponseI} from '../../../core/models/products/produtResponse.int
 import { Pagination } from "../../../shared/components/pagination/pagination";
 import { rxResource, takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { PaginationService } from '../../../shared/components/pagination/pagination-service';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-tienda',
-  imports: [SubMenu, CommonModule, Product, Pagination],
+  imports: [SubMenu, CommonModule, Product, Pagination, ButtonModule],
   templateUrl: './tienda.html',
   styleUrl: './tienda.scss',
 })
