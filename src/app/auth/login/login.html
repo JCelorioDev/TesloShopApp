@@ -70,7 +70,7 @@
           </button>
         </div>
 
-        <div class="text-center mt-4" (click)="openRegisterModal()">
+        <div class="text-center mt-4" (click)="openRegister()">
           <p class="text-gray-600 dark:text-gray-400 text-sm">
             No tienes una cuenta aún?
             <a class="text-primary hover:text-primary-focus font-semibold ml-1">
@@ -92,4 +92,3 @@
 
 
 
-<auth-register [valueOpenModal]="isModalOpen()" (closeRegisterModal)="closeRegisterModal()"></auth-register>

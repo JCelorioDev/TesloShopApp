@@ -12,6 +12,8 @@ import { Auth } from '../../core/services/auth/auth';
 export class Register {
   valueOpenModal = input<boolean>(false);
   closeRegisterModal = output<void>();
+  openLoginModal = output<void>();
+  registrationCompleted = output<void>();
   public formRegister!:FormGroup;
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(Auth);
@@ -34,11 +36,10 @@ export class Register {
 
   // * Emitir evento para abrir el modal login
 
-  changeModalLogin():void {
+  changeModalLogin(): void {
     this.onClose();
-    this.closeRegisterModal.emit();
+    this.openLoginModal.emit();
   }
-
   // * Registrar
 
   register():void {
@@ -50,7 +51,7 @@ export class Register {
     this.authService.register(this.formRegister.value).subscribe((resp) => {
       if (resp) {
         this.onClose();
-        this.o
+        this.registrationCompleted.emit();
         console.log('Registrado con exito'); return;
       }
 

@@ -15,6 +15,7 @@ export class Login {
   valueOpenModal = input<boolean>(false);
   closeModal = output<void>();
   openModalLogin = output<void>();
+  openRegisterModal = output<void>();
 
   private formBuilder = inject(FormBuilder);
   public formLogin!:FormGroup;
@@ -29,8 +30,8 @@ export class Login {
     })
   }
 
-  openRegisterModal(): void {
-    this.isModalOpen.set(true);
+ openRegister(): void {
+    this.openRegisterModal.emit();
   }
 
   openLoginModal(): void {
@@ -39,6 +40,10 @@ export class Login {
 
   closeRegisterModal(): void {
     this.isModalOpen.set(false);
+  }
+
+  onOpenLoginFromRegister(): void {
+    this.closeRegisterModal(); 
   }
 
 

@@ -72,9 +72,16 @@
 </div>
 
 
+
 <auth-login
   [valueOpenModal]="isModalOpen()"
   (closeModal)="closeLoginModal()"
-  (openModalLogin)="openLoginModal()"
-  >
-</auth-login>
+  (openRegisterModal)="openRegisterFromLogin()"
+  (registrationCompleted)="onRegistrationCompleted()" ></auth-login>
+
+
+<auth-register
+  [valueOpenModal]="isRegisterModalOpen()"
+  (closeRegisterModal)="closeRegisterModal()"
+  (openLoginModal)="openLoginFromRegister()">
+</auth-register>
