@@ -1,1 +1,113 @@
-<p>register works!</p>
+<dialog [class]="modalClass()" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div class="card-body">
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-white">TenloShop</h2>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Registro</p>
+      </div>
+
+      <form (ngSubmit)="register()" [formGroup]="formRegister" class="space-y-4">
+        <div class="form-control">
+            <label class="label">
+              <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Nombres completos</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Ingresa tu nombres"
+              formControlName="fullName"
+              class="input input-bordered w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 focus:border-primary dark:focus:border-primary"
+              required
+            />
+            @if (  formRegister.get('fullName')?.errors && formRegister.get('fullName')?.touched ) {
+              @if ( formRegister.get('fullName')?.getError('required')) {
+                <div role="alert" class="alert alert-warning mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>El campo es obligatorio</span>
+                </div>
+              }
+            }
+        </div>
+        <div class="form-control">
+            <label class="label">
+              <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Correo electrónico</span>
+            </label>
+            <input
+              type="email"
+              placeholder="Ingresa tu correo electrónico"
+              formControlName="email"
+              class="input input-bordered w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 focus:border-primary dark:focus:border-primary"
+              required
+            />
+            @if (  formRegister.get('email')?.errors && formRegister.get('email')?.touched ) {
+              @if ( formRegister.get('email')?.getError('required')) {
+                <div role="alert" class="alert alert-warning mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>El campo es obligatorio</span>
+                </div>
+              }
+
+              @if(formRegister.get('email')?.getError('pattern')){
+                <div role="alert" class="alert alert-warning mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>Correo no válido</span>
+                </div>
+              }
+            }
+        </div>
+
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text text-gray-700 dark:text-gray-300 font-medium">Contraseña</span>
+          </label>
+          <input
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            formControlName="password"
+            class="input input-bordered w-full bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 focus:border-primary dark:focus:border-primary"
+            required
+          />
+
+          @if ( formRegister.get('password')?.errors && formRegister.get('password')?.touched ) {
+
+            @if (formRegister.get('password')?.getError('required')) {
+              <div role="alert" class="alert alert-warning mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>El campo es obligatorio</span>
+              </div>
+            }
+          }
+        </div>
+
+        <div class="form-control mt-6">
+          <button type="submit" class="btn btn-primary w-full py-3 text-white font-semibold">
+            Registrarme
+          </button>
+        </div>
+
+        <div (click)="changeModalLogin()"  class="text-center mt-4">
+          <p class="text-gray-600 dark:text-gray-400 text-sm">
+            <a class="text-primary hover:text-primary-focus font-semibold ml-1">
+              Ya tienes una cuenta?
+            </a>
+          </p>
+        </div>
+      </form>
+
+
+      <div class="modal-action justify-end mt-6">
+        <button type="button" class="btn" (click)="onClose()">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</dialog>
+

@@ -70,11 +70,11 @@
           </button>
         </div>
 
-        <div class="text-center mt-4">
+        <div class="text-center mt-4" (click)="openRegisterModal()">
           <p class="text-gray-600 dark:text-gray-400 text-sm">
-            Don't have an account?
-            <a href="#" class="text-primary hover:text-primary-focus font-semibold ml-1">
-              Sign up
+            No tienes una cuenta aún?
+            <a class="text-primary hover:text-primary-focus font-semibold ml-1">
+              Registrate aquí
             </a>
           </p>
         </div>
@@ -89,3 +89,7 @@
     </div>
   </div>
 </dialog>
+
+
+
+<auth-register [valueOpenModal]="isModalOpen()" (closeRegisterModal)="closeRegisterModal()"></auth-register>

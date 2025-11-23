@@ -1,10 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Auth } from '../../../core/services/auth/auth';
-import { AuthResponseI, User } from '../../../core/models/auth/authResponse.interface'; '../../../core/models/auth/authResponse.interface'
+import { AuthResponseI, User } from '../../../core/models/auth/authResponse.interface';import { CommonModule } from '@angular/common';
+ '../../../core/models/auth/authResponse.interface'
 
 @Component({
   selector: 'private-profil',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './profil.html',
   styleUrl: './profil.scss',
 })
@@ -23,6 +24,7 @@ export class Profil {
   verifyStatusCheck():void {
     this.authService.checkStatus().subscribe({
       next: (s:any) => {
+        console.log(s);
         this.objUser.set(s.user);
       },
       error: (err) => {
